@@ -1,0 +1,243 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://thumbs.gfycat.com/FalseThoroughAlleycat-max-14mb.gif');
+  background-size: cover;
+  text-align: center;
+  
+}
+@font-face {
+  font-family: "MetalMania";
+  src: local("MetalMania"),
+    url("./fonts/MetalMania-Regular.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.navBar {
+  height: 7vh;
+  width: 100vw;
+  background-color: rgba(0,0,0, 0.8);
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  box-shadow: 1rem 0.1rem 0.1rem royalblue;
+
+}
+.navBar button {
+  width: 7%;
+  height: 1.5rem;
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: rgba(83, 51, 237, 0.5);
+  color: rgba(225, 225, 225);
+  font-family: MetalMania;
+  margin-left: 30%;
+
+}
+.unClaimedToken{
+  margin-left: 15%;
+}
+.TokenBalance{
+  margin-left: 13%;
+}
+.balance{
+  font-style: italic;
+  color: royalblue;
+}
+.token{
+  font-style: italic;
+  color: royalblue;
+}
+.userAddress{
+  margin-left: auto;
+}
+.address {
+  font-style: italic;
+  color: royalblue;
+}
+.brandName{
+  position: absolute;
+  left: 0;
+  font-family: cursive;
+  font-family: MetalMania;
+  margin-left: 2.5rem;
+}
+.soundP-logo{
+  position: absolute;
+  left: 0;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.brandDescription{
+  font-size: 1.5rem;
+  font-family: MetalMania;
+}
+
+.main-page{
+  text-align: center;
+  color: white;
+  position: relative;
+  margin-top: 5rem;
+}
+::-webkit-file-upload-button{
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  background-color: rgba(83, 51, 237, 0.5);
+  color: white;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: MetalMania;
+}
+::-webkit-file-upload-button:focus{
+  outline: none;
+}
+::-webkit-file-upload-button:hover{
+  background-color: rgba(83, 51, 237);
+  color: rgba(225, 225, 225);
+}
+.upload-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  margin-top: 6%;
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upload-form button{
+  margin-left: auto;
+  text-align: center;
+  width: 160px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(83, 51, 237, 0.5);
+  border: none;
+  font-family: MetalMania;
+
+}
+.switchForm-btns{
+  width: 50vw;
+  height: auto;
+  padding: 0.5rem;
+  
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -7%);
+}
+.switchBtn{
+  border: none;
+  height: 2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: rgba(83, 51, 237, 0.5);
+  color: rgba(225, 225, 225, 0.6);
+  font-family: MetalMania;
+}
+button:hover{
+  background-color: rgba(83, 51, 237);
+  color: rgba(225, 225, 225);
+
+}
+.activeBtn{
+  background-color: rgba(83, 51, 237);
+  color: rgba(225, 225, 225);
+}
+.currentComponentBtn {
+  background-color: rgba(83, 51, 237);
+  color: rgba(225, 225, 225);
+
+}
+.form{
+  height: 13rem;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+}
+.form h3{
+  font-size: 1.3rem;
+  font-family: MetalMania;
+  color:rgba(225, 225, 225, 0.9)
+
+}
+.form input {
+  width: 60%;
+  height: 1.7rem;
+  border-radius: 0.1rem;
+  border: none;
+  box-shadow: 0.1rem 0.15rem 0.3rem rgba(225, 225, 225);
+  margin-bottom: 1rem;
+}
+.form input::placeholder{
+  font-style: italic;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.form-button {
+  width: 25%;
+  height: 1.4rem;
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  background-color: rgba(83, 51, 237, 0.5);
+  color: rgba(225, 225, 225);
+  font-family: MetalMania;
+}
+input:focus{
+  outline: none;
+}
+button:focus{
+  outline: none;
+}
+
+.buffers-list{
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+.buffer-link{
+  cursor: pointer;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+.copy-icon{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+
+}
+small{
+  color: white;
+}
+.displayedCid{
+  display: inline;
+}
+
+
+
+
