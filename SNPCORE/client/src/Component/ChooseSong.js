@@ -3,7 +3,7 @@ import "../App.css";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({host: "ipfs.infura.io", port: 5001, protocol:"https"})
-const controller= new AbortController()
+var controller= new AbortController();
 
 class ChooseSong extends Component {
     state = {
@@ -27,9 +27,9 @@ class ChooseSong extends Component {
                 buffer: Buffer(reader.result)
             })
             console.log(this.state.buffer);
+            controller.abort();
            
         }
-
     }
     //https://ipfs.infura.io/ipfs/QmVbbYGaCoJa4rMgw41GkGPXQa8184ioLwcipmvb2D926f
     //push file to ipfs using file buffer
