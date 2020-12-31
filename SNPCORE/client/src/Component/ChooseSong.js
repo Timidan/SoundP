@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 const ipfsClient = require('ipfs-http-client')
-const ipfs = ipfsClient({host: "ipfs.infura.io", port: 5001, protocol:"https"})
+const ipfs = new ipfsClient({host: "ipfs.infura.io", port: 5001, protocol:"https"})
 
 
 class ChooseSong extends Component {
@@ -15,7 +15,7 @@ class ChooseSong extends Component {
     
     captureFile = (e)=>{
         e.preventDefault();
-        console.log('file catured')
+        console.log('file captured')
         //process file for ipfs
         //first fetch file from event
         const userFile = e.target.files[0];
