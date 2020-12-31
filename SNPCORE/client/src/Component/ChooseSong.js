@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "../App.css";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 const ipfsClient = require('ipfs-http-client')
-const ipfs = new ipfsClient({host: "ipfs.infura.io", port: 5001, protocol:"https"})
-
+const ipfs = ipfsClient({host: "ipfs.infura.io", port: 5001, protocol:"https"})
+const controller= new AbortController()
 
 class ChooseSong extends Component {
     state = {
@@ -20,6 +20,7 @@ class ChooseSong extends Component {
         //first fetch file from event
         const userFile = e.target.files[0];
         const reader = new window.FileReader();
+        
         reader.readAsArrayBuffer(userFile);
         reader.onloadend = () => {
             this.setState({
