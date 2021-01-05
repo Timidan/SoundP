@@ -42,13 +42,13 @@ class App extends Component {
         userAccount
       })
 
-      const TrackRewarderAddress = '0x88CF5E1E5233F4a7FE5899c2d34902D7fFEa118C';
+      const TrackRewarderAddress = '0xF3C182514f320ae484AF1ceBFC6AD7EAA9D169C0';
        //an instance of trackrewarder
       const myContractInstance = new web3.eth.Contract(TrackRewarderABI, TrackRewarderAddress);
       
 
       //an instance of snptoken
-      const snpAddress = '0x286228C319e3Beaa5693da66AdfFbBB388856df0';
+      const snpAddress = '0xa74C32F9Ab9462e140068aDC104eEc9a80E48a00';
       const tokenContract = new web3.eth.Contract(SNPTokenABI, snpAddress);
       const tokenBal = await tokenContract.methods.balanceOf(this.state.userAccount).call();
       const actualTokenBal = web3.utils.fromWei(tokenBal);
@@ -88,7 +88,6 @@ class App extends Component {
   registerAddressHandler = async (addressEnroll)=> {
     try{
       await this.state.contract.methods.addUploader(addressEnroll).send({
-        from: '0xF3a57FAbea6e198403864640061E3abc168cee80'
       });
     }
     catch(error){

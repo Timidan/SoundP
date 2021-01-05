@@ -63,12 +63,12 @@ modifier notUploader(address target){
 }
 
 modifier anUploader(address _targ){
-    require(Uploaders[msg.sender].active==true,'you have not been activated to upload songs');
+    require(Uploaders[_targ].active==true,'you have not been activated to upload songs');
     _;
 }
 
 modifier notEmpty(address _targ){
-    require(unclaimedTokens[msg.sender].earned>=1,"you do not have any tokens to redeem");
+    require(unclaimedTokens[_targ].earned>=1,"you do not have any tokens to redeem");
     _;
 }
 
@@ -125,6 +125,8 @@ function addTrack(address uploader,bytes32 songBuffer) public anUploader(msg.sen
     meta = (keccak256 (abi.encodePacked (now ,uploader)));
     trackOwners[(msg.sender)].owner = uploader;
     TrackMetas[meta].metadata = meta;
+    TrackMetas[meta].owner=uploader;
+    TrackMetas[meta].timeUploaded=now;
     emit trackAdded (uploader,meta,now);
     metadatas.push(meta);
     Uploaders[msg.sender]._tracks++;
@@ -133,9 +135,19 @@ function addTrack(address uploader,bytes32 songBuffer) public anUploader(msg.sen
     return(meta);
    
 }
-    
-    //internal function that allows the uploader to redeem his unclaimed tokens
-    function redeem(address _artist) internal notEmpty(_artist) nonReentrant returns(bool){
+
+//allows anyone to see the owner of a track and when it was uploaded 
+function seeTrackDetails(bytes32 Trackmeta) public view returns(address,uint){
+    return (TrackMetas[Trackmeta].owner,TrackMetas[Trackmeta].timeUploaded);
+}
+
+//allows an uploader to see all his song buffers/cids
+function checkMyBuffers() public anUploader(msg.sender) view returns(bytes32[] memory){
+   return Uploaders[msg.sender].buffers;
+}
+
+//internal function to redeem tokens
+    function redeem(address _artist) internal notEmpty(_artist) returns(bool){
         uint toSend=checkPendingTokens();
         _token.transfer(_artist,toSend);
          unclaimedTokens[msg.sender].earned=0;
@@ -144,15 +156,19 @@ function addTrack(address uploader,bytes32 songBuffer) public anUploader(msg.sen
         
     }
     
+    
+    //allows an uploader to see the tokens he has not claimed yet
     function checkPendingTokens() public view returns(uint){
         
         return unclaimedTokens[msg.sender].earned;
     }
     
+    //a simple function to check the contract allowance
     function remAllowance(address tokenOwner) public view returns(uint256){
       return  _token.allowance(tokenOwner,address(this));
     }
     
+    //main function that transfers all unclaimed tokens to the uploader
     function getTokens(address _to) public  returns(uint) {
         redeem(_to);
        
@@ -163,9 +179,9 @@ function addTrack(address uploader,bytes32 songBuffer) public anUploader(msg.sen
   /*	function versionRecipient() external virtual view override returns (string memory) {
 		return "1.0";
 	}
+
    function getTrustedForwarder() public view override returns(address) {
 		return trustedForwarder;
 	}
     */
 }
-
